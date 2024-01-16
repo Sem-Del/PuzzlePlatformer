@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - MovePower
+  - Button
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float castDistance;
     public string groundTag;
     public string movePowerTag;
+    public string buttonTag;
 
     private Rigidbody2D rb;
 
@@ -43,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag(groundTag) || collider.CompareTag(movePowerTag))
+            if (collider.CompareTag(groundTag) || collider.CompareTag(movePowerTag) || collider.CompareTag(buttonTag))
             {
                 return true;
             }
