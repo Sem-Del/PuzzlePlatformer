@@ -43,7 +43,7 @@ public class Button : MonoBehaviour
             case ButtonType.LevelReset1:
                 GetComponent<Renderer>().material = Button_Pressed;
                 MoveObject1.transform.position = new Vector2(22.15f, 29.58f);
-                MoveObject2.transform.position = new Vector2(35f, 34.482f);
+                MoveObject2.transform.position = new Vector2(28f, 35.4f);
                 Debug.Log("Level Reset");
                 break;
             case ButtonType.PlaceBlock:
