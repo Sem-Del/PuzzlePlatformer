@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public string groundTag;
     public string movePowerTag;
     public string buttonTag;
-
+    
     private Rigidbody2D rb;
 
     private bool isGrounded;
@@ -24,13 +24,10 @@ public class PlayerMovement : MonoBehaviour
     {
         float move = Input.GetAxis("Horizontal");
 
-        // Movement
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
 
-        // Check if the player is grounded
         isGrounded = IsGrounded();
 
-        // Jumping
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0f);

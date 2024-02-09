@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Powers : MonoBehaviour
 {
     public int currentPower = 0;
     public bool PowerDestroy;
-    public float cooldownTime = 1f;
+    public float cooldownTime = 0.01f;
     private bool isCooldown = false;
 
-    private bool canMoveBlocks = true;
+    public Sprite PowerOne;
+    public Sprite PowerTwo;
+    public Sprite PowerThree;
+    public Image powerImage;
 
-    public List<string> powersList = new List<string> { "Power1", "Power2" }; // Updated to have only 2 powers
+    private bool canMoveBlocks = true;
+    private bool gravityPowerOn = false;
+    private bool thirdPower = true;
+
+    private BoostPower boostPower;
+
+    public List<string> powersList = new List<string> { "Power1", "Power2", "Power3" };
 
     void Update()
     {
@@ -50,7 +60,7 @@ public class Powers : MonoBehaviour
         }
     }
 
-    void ChangePower()
+    public void ChangePower()
     {
         currentPower = (currentPower + 1) % powersList.Count;
 
@@ -60,10 +70,29 @@ public class Powers : MonoBehaviour
         if (powersList[currentPower] == "Power1")
         {
             canMoveBlocks = true;
+            powerImage.sprite = PowerOne;
         }
         else if (powersList[currentPower] == "Power2")
         {
             canMoveBlocks = false;
+            powerImage.sprite = PowerTwo;
+        }else if (powersList[currentPower] == "Power3" && thirdPower == false) 
+        { 
+            ChangePower();
+            Debug.Log("Power3 not unlocked switched to power " + powersList[currentPower]);
+        }else if (powersList[currentPower] == "Power3" && thirdPower == true)
+        {
+            if (boostPower != null)
+            {
+                boostPower.boostPower();
+            }
+            else
+            {
+                ChangePower();
+                Debug.Log("Error 42069");
+            }
+            
+            powerImage.sprite = PowerThree;
         }
 
         HandleMovePowerBlocks();

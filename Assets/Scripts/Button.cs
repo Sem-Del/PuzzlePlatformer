@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum ButtonType
 {
     LevelReset1,
     PlaceBlock,
     Pressed,
-    // Add more button types as needed
+    Checkpoint,
+    end,
 }
 
 public class Button : MonoBehaviour
@@ -17,15 +19,23 @@ public class Button : MonoBehaviour
     public GameObject MoveObject1;
     public GameObject MoveObject2;
 
+    //public float moveObject1X = 30f;
+    //public float moveObject1Y = 34f;
+
+    void Start()
+    {
+        MoveObject1.transform.position = new Vector2(22.15f, 29.58f);
+        MoveObject2.transform.position = new Vector2(23f, 33.4f);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("MovePower"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("MovePower") || collision.gameObject.CompareTag("endBlock"))
         {
             isPressed = true;
             ActivateButton();
         }
     }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("MovePower"))
@@ -43,7 +53,7 @@ public class Button : MonoBehaviour
             case ButtonType.LevelReset1:
                 GetComponent<Renderer>().material = Button_Pressed;
                 MoveObject1.transform.position = new Vector2(22.15f, 29.58f);
-                MoveObject2.transform.position = new Vector2(28f, 35.4f);
+                MoveObject2.transform.position = new Vector2(23f, 33.4f);
                 Debug.Log("Level Reset");
                 break;
             case ButtonType.PlaceBlock:
@@ -51,6 +61,13 @@ public class Button : MonoBehaviour
                 break;
             case ButtonType.Pressed:
                 GetComponent<Renderer>().material = Button_Pressed;
+                MoveObject2.transform.position = new Vector2(23f, 40f);
+                break;
+            case ButtonType.Checkpoint:
+
+                break;
+            case ButtonType.end:
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
                 break;
         }
     }

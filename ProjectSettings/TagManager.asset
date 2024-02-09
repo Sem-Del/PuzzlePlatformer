@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - MovePower
   - Button
+  - GravityFlip
+  - endBlock
   layers:
   - Default
   - TransparentFX
