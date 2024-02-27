@@ -14,6 +14,8 @@ public class TimelineController : MonoBehaviour
     public bool move = false;
     public bool jump = false;
 
+    private DetectionArea Detection;
+
     public void Update()
     {
         if (move == false && Input.GetKeyDown(KeyCode.A)) 
@@ -37,17 +39,18 @@ public class TimelineController : MonoBehaviour
             cutsceneTwo.Play();
         }
 
-        void wrongway(int wrwa)
-        {
-            if (wrwa == 1)
-            {
-                wrongWay1.Play();
-            }else if (wrwa == 2)
-            {
-                wrongWay2.Play();
-            }
-        }
+    }
 
+    public void wrongway(int wrongWay)
+    {
+        if (wrongWay == 1)
+        {
+            wrongWay1.Play();
+        }
+        else if (wrongWay == 2)
+        {
+            wrongWay2.Play();
+        }
     }
 
 }

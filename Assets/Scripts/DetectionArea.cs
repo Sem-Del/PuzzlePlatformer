@@ -21,6 +21,8 @@ public class DetectionArea : MonoBehaviour
     public Camera cam;
     public AreaType AreaType;
 
+    private TimelineController timeline;
+
     void Start()
     {
 
@@ -42,7 +44,25 @@ public class DetectionArea : MonoBehaviour
                 cam.backgroundColor = color2;
             }else if (AreaType == AreaType.WrongWay)
             {
+                timeline.wrongway(1);
                 Debug.Log("Wrong Way");
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (AreaType == AreaType.WrongWay)
+            {
+
+                if (AreaType == AreaType.WrongWay)
+                {
+                    Debug.Log("Wrong Way");
+                    timeline.wrongway(2);
+                }
+                
             }
         }
     }
