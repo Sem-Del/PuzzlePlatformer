@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,8 +13,12 @@ public class PlayerMovement : MonoBehaviour
     public string buttonTag;
     
     private Rigidbody2D rb;
+    private TimelineController Animation;
 
     private bool isGrounded;
+    private bool powerSystemUnlocked = false;
+
+    public GameObject powerSystem;
 
     void Start()
     {
@@ -32,6 +37,18 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("PowerItem"))
+        {
+            if (other.gameObject == powerSystem)
+            {
+                Destroy(other.gameObject);
+                powerSystemUnlocked = true;
+            }
         }
     }
 

@@ -9,6 +9,7 @@ TagManager:
   - Button
   - GravityFlip
   - endBlock
+  - PowerItem
   layers:
   - Default
   - TransparentFX

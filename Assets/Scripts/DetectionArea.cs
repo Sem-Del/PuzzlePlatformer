@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public enum AreaType
 {
@@ -23,6 +24,8 @@ public class DetectionArea : MonoBehaviour
 
     private TimelineController timeline;
 
+    public PlayableDirector wrongWay1;
+
     void Start()
     {
 
@@ -36,35 +39,20 @@ public class DetectionArea : MonoBehaviour
 
             if (AreaType == AreaType.MainArea)
             {
-                Debug.Log("Main area");
                 cam.backgroundColor = mainBlue;
             }else if (AreaType == AreaType.FirstPowerArea)
             {
-                Debug.Log("New area");
                 cam.backgroundColor = color2;
             }else if (AreaType == AreaType.WrongWay)
             {
-                timeline.wrongway(1);
-                Debug.Log("Wrong Way");
+                wrongWay1.Play();
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            if (AreaType == AreaType.WrongWay)
-            {
 
-                if (AreaType == AreaType.WrongWay)
-                {
-                    Debug.Log("Wrong Way");
-                    timeline.wrongway(2);
-                }
-                
-            }
-        }
     }
 
     AreaType GetAreaType(GameObject player)

@@ -8,8 +8,6 @@ public class TimelineController : MonoBehaviour
 {
     public PlayableDirector cutsceneOne;
     public PlayableDirector cutsceneTwo;
-    public PlayableDirector wrongWay1;
-    public PlayableDirector wrongWay2;
 
     public bool move = false;
     public bool jump = false;
@@ -33,24 +31,7 @@ public class TimelineController : MonoBehaviour
             jump = true;
             cutsceneTwo.Play();
         }
-        else if (jump == false && Input.GetKeyDown(KeyCode.Space))
-        {
-            jump = true;
-            cutsceneTwo.Play();
-        }
 
-    }
-
-    public void wrongway(int wrongWay)
-    {
-        if (wrongWay == 1)
-        {
-            wrongWay1.Play();
-        }
-        else if (wrongWay == 2)
-        {
-            wrongWay2.Play();
-        }
     }
 
 }
