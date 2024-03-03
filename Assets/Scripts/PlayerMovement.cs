@@ -14,19 +14,32 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody2D rb;
     private TimelineController Animation;
+    private Dialog Trigger;
+    public PlayableDirector powerIndicatorVisible;
 
     private bool isGrounded;
-    private bool powerSystemUnlocked = false;
+    public bool powerSystemUnlocked = false;
 
     public GameObject powerSystem;
+    private BoxCollider2D powerMachineCollider;
+    private SpriteRenderer powerMachineRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Trigger = FindObjectOfType<Dialog>();
+        powerMachineCollider = powerSystem.GetComponent<BoxCollider2D>();
+        powerMachineRenderer = powerSystem.GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        if (DialogueManger.isActive)
+        {
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+            return;
+        }
+
         float move = Input.GetAxis("Horizontal");
 
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
@@ -46,7 +59,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (other.gameObject == powerSystem)
             {
-                Destroy(other.gameObject);
+                powerMachineCollider.enabled = false;
+                powerMachineRenderer.enabled = false;
+                powerIndicatorVisible.Play();
+                Trigger.startDialogue();
                 powerSystemUnlocked = true;
             }
         }

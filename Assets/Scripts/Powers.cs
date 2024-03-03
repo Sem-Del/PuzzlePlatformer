@@ -20,6 +20,7 @@ public class Powers : MonoBehaviour
     private bool thirdPower = true;
 
     private BoostPower boostPower;
+    private PlayerMovement movement;
 
     public List<string> powersList = new List<string> { "Power1", "Power2", "Power3" };
 
@@ -30,7 +31,7 @@ public class Powers : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && movement.powerSystemUnlocked == true)
         {
             StartCoroutine(StartCooldown());
             ChangePower();

@@ -6,8 +6,8 @@ using UnityEngine.Playables;
 
 public class TimelineController : MonoBehaviour
 {
-    public PlayableDirector cutsceneOne;
-    public PlayableDirector cutsceneTwo;
+    public PlayableDirector cutscene1;
+    public PlayableDirector cutscene2;
 
     public bool move = false;
     public bool jump = false;
@@ -19,17 +19,17 @@ public class TimelineController : MonoBehaviour
         if (move == false && Input.GetKeyDown(KeyCode.A)) 
         {
             move = true;
-            cutsceneOne.Play();
+            cutscene1.Play();
         }else if (move == false && Input.GetKeyDown(KeyCode.D))
         {
             move = true;
-            cutsceneOne.Play();
+            cutscene1.Play();
         }
 
         if (jump == false && Input.GetKeyDown(KeyCode.Space))
         {
             jump = true;
-            cutsceneTwo.Play();
+            cutscene2.Play();
         }
 
     }

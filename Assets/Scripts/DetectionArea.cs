@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.TextCore.Text;
 
 public enum AreaType
 {
     MainArea,
     FirstPowerArea,
     WrongWay,
+    Dialogue,
 }
 
 
@@ -23,12 +26,17 @@ public class DetectionArea : MonoBehaviour
     public AreaType AreaType;
 
     private TimelineController timeline;
+    public Dialog Trigger;
 
     public PlayableDirector wrongWay1;
 
     void Start()
     {
-
+        Trigger = FindObjectOfType<Dialog>();
+        if (Trigger == null)
+        {
+            Debug.LogError("Error: Dialog component not found!");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -46,6 +54,9 @@ public class DetectionArea : MonoBehaviour
             }else if (AreaType == AreaType.WrongWay)
             {
                 wrongWay1.Play();
+            }else if (AreaType == AreaType.Dialogue && Trigger != null)
+            {
+                Trigger.startDialogue();
             }
         }
     }
