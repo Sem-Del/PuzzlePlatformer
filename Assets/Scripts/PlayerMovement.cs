@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded;
     public bool powerSystemUnlocked = false;
-
+    
     public GameObject powerSystem;
     private BoxCollider2D powerMachineCollider;
     private SpriteRenderer powerMachineRenderer;
@@ -62,7 +62,11 @@ public class PlayerMovement : MonoBehaviour
                 powerMachineCollider.enabled = false;
                 powerMachineRenderer.enabled = false;
                 powerIndicatorVisible.Play();
-                Trigger.startDialogue();
+                Dialog dialogScript = other.gameObject.GetComponent<Dialog>();
+            if (dialogScript != null)
+            {
+                dialogScript.startDialogue(); 
+            }
                 powerSystemUnlocked = true;
             }
         }
@@ -79,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
                 return true;
             }
         }
-
+            
         return false;
     }
 

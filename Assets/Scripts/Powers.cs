@@ -7,7 +7,7 @@ public class Powers : MonoBehaviour
 {
     public int currentPower = 0;
     public bool PowerDestroy;
-    public float cooldownTime = 0.01f;
+    private float cooldownTime = 0.2f;
     private bool isCooldown = false;
 
     public Sprite PowerOne;
@@ -17,12 +17,17 @@ public class Powers : MonoBehaviour
 
     private bool canMoveBlocks = true;
     private bool gravityPowerOn = false;
-    private bool thirdPower = true;
+    private bool thirdPower = false;
 
     private BoostPower boostPower;
     private PlayerMovement movement;
 
     public List<string> powersList = new List<string> { "Power1", "Power2", "Power3" };
+
+    void Start()
+    {
+        movement = FindObjectOfType<PlayerMovement>();
+    }
 
     void Update()
     {
@@ -55,6 +60,8 @@ public class Powers : MonoBehaviour
             Rigidbody2D rb = block.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
+                rb.velocity = Vector2.down * 1f;
+
                 rb.constraints = canMoveBlocks ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezeAll;
                 rb.constraints |= RigidbodyConstraints2D.FreezeRotation;
             }
@@ -80,7 +87,6 @@ public class Powers : MonoBehaviour
         }else if (powersList[currentPower] == "Power3" && thirdPower == false) 
         { 
             ChangePower();
-            Debug.Log("Power3 not unlocked switched to power " + powersList[currentPower]);
         }else if (powersList[currentPower] == "Power3" && thirdPower == true)
         {
             if (boostPower != null)
@@ -104,13 +110,12 @@ public class Powers : MonoBehaviour
         switch (power)
         {
             case "Power1":
-                Debug.Log("Using Power1");
                 break;
             case "Power2":
-                Debug.Log("Using Power2");
+                break;
+            case "Power3":
                 break;
             default:
-                Debug.Log("Invalid Power");
                 break;
         }
     }

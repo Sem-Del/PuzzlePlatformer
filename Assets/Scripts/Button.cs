@@ -17,15 +17,13 @@ public class Button : MonoBehaviour
     public Material Button_Pressed;
     public ButtonType buttonType;
     public GameObject MoveObject1;
-    public GameObject MoveObject2;
 
     //public float moveObject1X = 30f;
     //public float moveObject1Y = 34f;
 
     void Start()
     {
-        MoveObject1.transform.position = new Vector2(22.15f, 29.58f);
-        MoveObject2.transform.position = new Vector2(23f, 33.4f);
+        MoveObject1.transform.position = new Vector2(239f, 6f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,8 +50,7 @@ public class Button : MonoBehaviour
         {
             case ButtonType.LevelReset1:
                 GetComponent<Renderer>().material = Button_Pressed;
-                MoveObject1.transform.position = new Vector2(22.15f, 29.58f);
-                MoveObject2.transform.position = new Vector2(23f, 33.4f);
+                MoveObject1.transform.position = new Vector2(239f, 8f);
                 Debug.Log("Level Reset");
                 break;
             case ButtonType.PlaceBlock:
@@ -61,7 +58,7 @@ public class Button : MonoBehaviour
                 break;
             case ButtonType.Pressed:
                 GetComponent<Renderer>().material = Button_Pressed;
-                MoveObject2.transform.position = new Vector2(23f, 40f);
+                MoveObject1.transform.position = new Vector2(23f, 40f);
                 break;
             case ButtonType.Checkpoint:
 
