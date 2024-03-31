@@ -64,7 +64,7 @@ public class Button : MonoBehaviour
 
                 break;
             case ButtonType.end:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
                 break;
         }
     }

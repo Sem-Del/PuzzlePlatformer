@@ -34,10 +34,18 @@ public class menu : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void start()
+    public void introCutscene()
     {
-        // Load the scene named game (needs to be lower then the current scene in the buildindex)
-        SceneManager.LoadScene("Game");
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void beginGame()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void quit()
