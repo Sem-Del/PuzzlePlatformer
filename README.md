@@ -16,7 +16,7 @@ You can download the game by the [releases tab](https://github.com/Sem-Del/Puzzl
 
 - Open the unziped zip file and open the file named 'PuzzlePlatformerGame.exe'.
 
-- You can now play the game. Have fun!
+- The game will now start and you can play it. Have fun!
 
 ## How to install for Mac:
 - First download the file named 'PuzzlePlatformerGameMac.zip'.
@@ -25,12 +25,14 @@ You can download the game by the [releases tab](https://github.com/Sem-Del/Puzzl
 
 - Open your terminal and navigate to the location of the folder with help of the 'cd' -commando
 
-- You can do this by typing ' cd "TypeExactLocationOffTheFolderHere" '
+- You can do this by typing ```cd "TypeExactLocationOffTheFolderHere"```
 
 - Then use the following command: 
 
 - chmod +x PuzzlePlatformerGameMac2.app/Contents/MacOS/PuzzlePlatformerGame
 
 - Now you can open the .app file.
+
+- The game will now start and you can play it. Have fun!
 
 ### Thats all have fun playing!
