@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public enum ButtonType
 {
     LevelReset1,
+    //LevelReset2,
     PlaceBlock,
     Pressed,
     Checkpoint,
@@ -17,6 +18,7 @@ public class Button : MonoBehaviour
     public Material Button_Pressed;
     public ButtonType buttonType;
     public GameObject MoveObject1;
+    //public GameObject MoveObject2;
 
     //public float moveObject1X = 30f;
     //public float moveObject1Y = 34f;
@@ -24,6 +26,7 @@ public class Button : MonoBehaviour
     void Start()
     {
         MoveObject1.transform.position = new Vector2(239f, 6f);
+        //MoveObject2.transform.position = new Vector2(318f, -0.4f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,9 +53,14 @@ public class Button : MonoBehaviour
         {
             case ButtonType.LevelReset1:
                 GetComponent<Renderer>().material = Button_Pressed;
-                MoveObject1.transform.position = new Vector2(239f, 8f);
+                MoveObject1.transform.position = new Vector2(239f, 6f);
                 Debug.Log("Level Reset");
                 break;
+            //case ButtonType.LevelReset2:
+            //    GetComponent<Renderer>().material = Button_Pressed;
+            //    MoveObject2.transform.position = new Vector2(318f, -0.4f);
+            //    Debug.Log("Level Reset");
+            //    break;
             case ButtonType.PlaceBlock:
                 Debug.Log("Block Placed");
                 break;
