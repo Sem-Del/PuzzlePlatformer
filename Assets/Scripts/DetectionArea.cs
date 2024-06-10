@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.TextCore.Text;
 
 public enum AreaType
 {
@@ -11,8 +9,9 @@ public enum AreaType
     FirstPowerArea,
     WrongWay,
     Dialogue,
+    ArenaEntrance,
+    ArenaLeave,
 }
-
 
 public class DetectionArea : MonoBehaviour
 {
@@ -29,8 +28,19 @@ public class DetectionArea : MonoBehaviour
 
     public PlayableDirector wrongWay1;
 
+    public GameObject arenaWall1;
+    public GameObject arenaWall2;
+
+    public Camera mainCamera;
+    public Camera arenaCamera;
+
     void Start()
     {
+        arenaWall1.SetActive(false);
+        arenaWall2.SetActive(false);
+        mainCamera.enabled = true;
+        arenaCamera.enabled = false;
+
         Trigger = FindObjectOfType<Dialog>();
         if (Trigger == null)
         {
@@ -47,22 +57,35 @@ public class DetectionArea : MonoBehaviour
             if (AreaType == AreaType.MainArea)
             {
                 cam.backgroundColor = mainBlue;
-            }else if (AreaType == AreaType.FirstPowerArea)
+            }
+            else if (AreaType == AreaType.FirstPowerArea)
             {
                 cam.backgroundColor = color2;
-            }else if (AreaType == AreaType.WrongWay)
+            }
+            else if (AreaType == AreaType.WrongWay)
             {
                 wrongWay1.Play();
-            }else if (AreaType == AreaType.Dialogue && Trigger != null)
+            }
+            else if (AreaType == AreaType.Dialogue && Trigger != null)
             {
                 Trigger.startDialogue();
+            }
+            else if (AreaType == AreaType.ArenaEntrance)
+            {
+                arenaWall1.SetActive(true);
+                arenaWall2.SetActive(true);
+                mainCamera.enabled = false;
+                arenaCamera.enabled = true;
             }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
-
+        if (other.CompareTag("Player"))
+        {
+            AreaType AreaType = GetAreaType(other.gameObject);
+        }
     }
 
     AreaType GetAreaType(GameObject player)
