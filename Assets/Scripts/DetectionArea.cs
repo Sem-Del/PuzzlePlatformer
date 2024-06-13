@@ -74,8 +74,13 @@ public class DetectionArea : MonoBehaviour
             {
                 arenaWall1.SetActive(true);
                 arenaWall2.SetActive(true);
-                mainCamera.enabled = false;
                 arenaCamera.enabled = true;
+                mainCamera.enabled = false;
+            }
+            else if (AreaType == AreaType.ArenaLeave)
+            {
+                mainCamera.enabled = true;
+                arenaCamera.enabled = false;
             }
         }
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -26,10 +27,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         Trigger = FindObjectOfType<Dialog>();
         powerMachineCollider = powerSystem.GetComponent<BoxCollider2D>();
         powerMachineRenderer = powerSystem.GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -63,13 +64,14 @@ public class PlayerMovement : MonoBehaviour
                 powerMachineRenderer.enabled = false;
                 powerIndicatorVisible.Play();
                 Dialog dialogScript = other.gameObject.GetComponent<Dialog>();
-            if (dialogScript != null)
-            {
-                dialogScript.startDialogue(); 
-            }
+                if (dialogScript != null)
+                {
+                    dialogScript.startDialogue();
+                }
                 powerSystemUnlocked = true;
             }
         }
+        
     }
 
     public bool IsGrounded()

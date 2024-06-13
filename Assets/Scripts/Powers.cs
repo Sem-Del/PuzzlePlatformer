@@ -16,10 +16,9 @@ public class Powers : MonoBehaviour
     public Image powerImage;
 
     private bool canMoveBlocks = true;
+    private bool attackPower = false;
     private bool gravityPowerOn = false;
-    private bool thirdPower = false;
 
-    private BoostPower boostPower;
     private PlayerMovement movement;
 
     public List<string> powersList = new List<string> { "Power1", "Power2", "Power3" };
@@ -84,20 +83,12 @@ public class Powers : MonoBehaviour
         {
             canMoveBlocks = false;
             powerImage.sprite = PowerTwo;
-        }else if (powersList[currentPower] == "Power3" && thirdPower == false) 
+        }else if (powersList[currentPower] == "Power3" && attackPower == false) 
         { 
             ChangePower();
-        }else if (powersList[currentPower] == "Power3" && thirdPower == true)
+        }else if (powersList[currentPower] == "Power3" && attackPower == true)
         {
-            if (boostPower != null)
-            {
-                boostPower.boostPower();
-            }
-            else
-            {
-                ChangePower();
-                Debug.Log("Error 42069");
-            }
+            
             
             powerImage.sprite = PowerThree;
         }
