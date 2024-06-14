@@ -7,10 +7,10 @@ TagManager:
   - Ground
   - MovePower
   - Button
-  - GravityFlip
   - endBlock
   - PowerItem
   - Enemy
+  - GravityFlip
   layers:
   - Default
   - TransparentFX

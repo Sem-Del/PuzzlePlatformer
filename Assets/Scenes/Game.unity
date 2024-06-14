@@ -4992,7 +4992,7 @@ Transform:
   m_GameObject: {fileID: 290725517}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 317.19, y: 1.57, z: 0}
+  m_LocalPosition: {x: 233.4, y: 9.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10103,6 +10103,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!1 &584699645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 584699646}
+  m_Layer: 0
+  m_Name: Bosses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &584699646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584699645}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 348.65344, y: -3.1911669, z: 1.7609653}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1733188641}
+  - {fileID: 974328873}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &585276193
 GameObject:
   m_ObjectHideFlags: 0
@@ -11062,7 +11095,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1106818698}
   m_Father: {fileID: 765032077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &659137564
@@ -16042,8 +16076,9 @@ GameObject:
   - component: {fileID: 974328873}
   - component: {fileID: 974328872}
   - component: {fileID: 974328874}
+  - component: {fileID: 974328875}
   m_Layer: 0
-  m_Name: FirstMiniBoss
+  m_Name: MiniBoss1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16091,7 +16126,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6039216, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.4716981, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -16109,12 +16144,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974328871}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 341.64, y: 1.86, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.8634338, y: -1.5388331, z: -1.7609653}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 584699646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &974328874
 BoxCollider2D:
@@ -16161,6 +16196,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &974328875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974328871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b149bd07be0abf9419f8593bf7d81ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
+  launchBlock: {fileID: 1106818697}
+  currentBoss: {fileID: 974328871}
 --- !u!1 &980867235
 GameObject:
   m_ObjectHideFlags: 0
@@ -17607,7 +17657,7 @@ GameObject:
   - component: {fileID: 1106818700}
   - component: {fileID: 1106818699}
   m_Layer: 0
-  m_Name: ground (178)
+  m_Name: LaunchBlock
   m_TagString: GravityFlip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17626,7 +17676,7 @@ Transform:
   m_LocalScale: {x: 3.0744617, y: 0.26182586, z: 0.6053}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1557434223}
+  m_Father: {fileID: 657709157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1106818699
 BoxCollider2D:
@@ -23734,6 +23784,8 @@ MonoBehaviour:
   PowerTwo: {fileID: 21300000, guid: 9c2c8e82c99b0a34698dd0c06136e57e, type: 3}
   PowerThree: {fileID: 21300000, guid: 93667dd902f913e41ae3d3cdbe5cda29, type: 3}
   powerImage: {fileID: 1988106180}
+  laserPrefab: {fileID: 8593406246246117940, guid: 9c6ad776a4977a44699b2df493c3f190, type: 3}
+  firePoint: {fileID: 0}
   powersList:
   - Power1
   - Power2
@@ -24992,7 +25044,6 @@ Transform:
   - {fileID: 1054921685}
   - {fileID: 628251627}
   - {fileID: 1081393383}
-  - {fileID: 1106818698}
   - {fileID: 1550869157}
   - {fileID: 78951015}
   - {fileID: 772579689}
@@ -27999,22 +28050,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1733188641}
   - component: {fileID: 1733188640}
-  - component: {fileID: 1733188639}
   m_Layer: 0
-  m_Name: BossBattle1
+  m_Name: BossBattleCam1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1733188639
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733188638}
-  m_Enabled: 1
 --- !u!20 &1733188640
 Camera:
   m_ObjectHideFlags: 0
@@ -28074,12 +28116,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733188638}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 338.36, y: 0.72, z: -18}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.293457, y: 3.911167, z: -19.760965}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 584699646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1742527748
 GameObject:
@@ -34469,9 +34511,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 1733188641}
   - {fileID: 1511725866}
-  - {fileID: 974328873}
+  - {fileID: 584699646}
   - {fileID: 1925500036}
   - {fileID: 419330521}
   - {fileID: 765032077}
