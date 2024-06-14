@@ -12,7 +12,9 @@ public class PlayerMovement : MonoBehaviour
     public string groundTag;
     public string movePowerTag;
     public string buttonTag;
-    
+    public string enemyTag;
+    public string gravityFlipTag;
+
     private Rigidbody2D rb;
     private TimelineController Animation;
     private Dialog Trigger;
@@ -20,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded;
     public bool powerSystemUnlocked = false;
-    
+
     public GameObject powerSystem;
     private BoxCollider2D powerMachineCollider;
     private SpriteRenderer powerMachineRenderer;
@@ -71,7 +73,16 @@ public class PlayerMovement : MonoBehaviour
                 powerSystemUnlocked = true;
             }
         }
-        
+
+        if (other.gameObject.CompareTag(enemyTag))
+        {
+            Respawn();
+        }
+
+        if (other.gameObject.CompareTag(gravityFlipTag))
+        {
+            StartCoroutine(FlipGravity());
+        }
     }
 
     public bool IsGrounded()
@@ -85,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
                 return true;
             }
         }
-            
+
         return false;
     }
 
@@ -93,5 +104,17 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, boxSize);
+    }
+
+    private void Respawn()
+    {
+        transform.position = new Vector3(317.22f, 1.05f, 0f);
+    }
+
+    private IEnumerator FlipGravity()
+    {
+        rb.gravityScale = -rb.gravityScale;
+        yield return new WaitForSeconds(1.2f);
+        rb.gravityScale = -rb.gravityScale;
     }
 }

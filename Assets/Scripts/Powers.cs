@@ -17,7 +17,6 @@ public class Powers : MonoBehaviour
 
     private bool canMoveBlocks = true;
     private bool attackPower = false;
-    private bool gravityPowerOn = false;
 
     private PlayerMovement movement;
 

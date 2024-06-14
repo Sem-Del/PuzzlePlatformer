@@ -10,6 +10,7 @@ TagManager:
   - GravityFlip
   - endBlock
   - PowerItem
+  - Enemy
   layers:
   - Default
   - TransparentFX
