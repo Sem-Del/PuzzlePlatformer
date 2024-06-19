@@ -28,4 +28,10 @@ public class BossBattle : MonoBehaviour
         launchBlock.SetActive(true);
         currentBoss.SetActive(false);
     }
+
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+        Debug.Log("Boss took damage, current hp: " + hp);
+    }
 }

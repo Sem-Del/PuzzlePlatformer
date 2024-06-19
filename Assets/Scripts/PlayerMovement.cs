@@ -27,12 +27,23 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D powerMachineCollider;
     private SpriteRenderer powerMachineRenderer;
 
+    public GameObject arenaWall1;
+    public GameObject arenaWall2;
+
+    public Camera mainCamera;
+    public Camera arenaCamera;
+
     void Start()
     {
         Trigger = FindObjectOfType<Dialog>();
         powerMachineCollider = powerSystem.GetComponent<BoxCollider2D>();
         powerMachineRenderer = powerSystem.GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+
+        arenaWall1.SetActive(true);
+        arenaWall2.SetActive(true);
+        mainCamera.enabled = false;
+        arenaCamera.enabled = true;
     }
 
     void Update()
@@ -109,6 +120,10 @@ public class PlayerMovement : MonoBehaviour
     private void Respawn()
     {
         transform.position = new Vector3(317.22f, 1.05f, 0f);
+        arenaWall1.SetActive(false);
+        arenaWall2.SetActive(false);
+        mainCamera.enabled = true;
+        arenaCamera.enabled = false;
     }
 
     private IEnumerator FlipGravity()

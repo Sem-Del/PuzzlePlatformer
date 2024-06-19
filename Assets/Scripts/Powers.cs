@@ -16,12 +16,10 @@ public class Powers : MonoBehaviour
     public Image powerImage;
 
     private bool canMoveBlocks = true;
-    private bool attackPower = false;
+    private bool attackPower = true;
 
     private PlayerMovement movement;
-
-    public GameObject laserPrefab;
-    public Transform firePoint;
+    public Laser laserScript;
 
     public List<string> powersList = new List<string> { "Power1", "Power2", "Power3" };
 
@@ -39,13 +37,14 @@ public class Powers : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F) && movement.powerSystemUnlocked == true)
         {
-            StartCoroutine(StartCooldown());
+            StartCoroutine(StartCooldown(0.2f));
             ChangePower();
         }
 
         if (Input.GetKeyDown(KeyCode.R) && powersList[currentPower] == "Power3" && attackPower)
         {
-            ShootLaser();
+            StartCoroutine(StartCooldown(0.3f));
+            laserScript.ActivateLaser();
         }
     }
 
@@ -119,15 +118,10 @@ public class Powers : MonoBehaviour
         }
     }
 
-    IEnumerator StartCooldown()
+    IEnumerator StartCooldown(float time)
     {
         isCooldown = true;
-        yield return new WaitForSeconds(cooldownTime);
+        yield return new WaitForSeconds(time);
         isCooldown = false;
-    }
-
-    void ShootLaser()
-    {
-        Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
     }
 }

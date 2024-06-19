@@ -30,6 +30,7 @@ public class DetectionArea : MonoBehaviour
 
     public GameObject arenaWall1;
     public GameObject arenaWall2;
+    public GameObject arenaWall3;
 
     public Camera mainCamera;
     public Camera arenaCamera;
@@ -38,6 +39,7 @@ public class DetectionArea : MonoBehaviour
     {
         arenaWall1.SetActive(false);
         arenaWall2.SetActive(false);
+        arenaWall3.SetActive(false);
         mainCamera.enabled = true;
         arenaCamera.enabled = false;
 
@@ -74,6 +76,7 @@ public class DetectionArea : MonoBehaviour
             {
                 arenaWall1.SetActive(true);
                 arenaWall2.SetActive(true);
+                arenaWall3.SetActive(true);
                 arenaCamera.enabled = true;
                 mainCamera.enabled = false;
             }
