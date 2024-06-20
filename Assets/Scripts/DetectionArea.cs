@@ -35,6 +35,8 @@ public class DetectionArea : MonoBehaviour
     public Camera mainCamera;
     public Camera arenaCamera;
 
+    private Powers powersScript;
+
     void Start()
     {
         arenaWall1.SetActive(false);
@@ -42,6 +44,16 @@ public class DetectionArea : MonoBehaviour
         arenaWall3.SetActive(false);
         mainCamera.enabled = true;
         arenaCamera.enabled = false;
+
+        GameObject player = GameObject.Find("Player");
+        if (player != null)
+        {
+            powersScript = player.GetComponent<Powers>();
+        }
+        else
+        {
+            Debug.LogError("Error: Player GameObject not found!");
+        }
 
         Trigger = FindObjectOfType<Dialog>();
         if (Trigger == null)
@@ -79,6 +91,11 @@ public class DetectionArea : MonoBehaviour
                 arenaWall3.SetActive(true);
                 arenaCamera.enabled = true;
                 mainCamera.enabled = false;
+
+                if (powersScript != null)
+                {
+                    powersScript.attackPower = true;
+                }
             }
             else if (AreaType == AreaType.ArenaLeave)
             {

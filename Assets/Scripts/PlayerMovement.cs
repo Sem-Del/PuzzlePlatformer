@@ -44,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
         arenaWall2.SetActive(true);
         mainCamera.enabled = false;
         arenaCamera.enabled = true;
+
+        powerSystemUnlocked = false;
     }
 
     void Update()

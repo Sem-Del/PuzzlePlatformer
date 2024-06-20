@@ -16,7 +16,7 @@ public class Powers : MonoBehaviour
     public Image powerImage;
 
     private bool canMoveBlocks = true;
-    private bool attackPower = true;
+    public bool attackPower = false;
 
     private PlayerMovement movement;
     public Laser laserScript;
@@ -25,6 +25,7 @@ public class Powers : MonoBehaviour
 
     void Start()
     {
+        attackPower = false;
         movement = FindObjectOfType<PlayerMovement>();
     }
 
@@ -38,8 +39,9 @@ public class Powers : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && movement.powerSystemUnlocked == true)
         {
             StartCoroutine(StartCooldown(0.2f));
+            canMoveBlocks = true;
             ChangePower();
-        }
+        }else if (Input.GetKeyDown(KeyCode.F) && movement.powerSystemUnlocked == false) { currentPower = 1; }
 
         if (Input.GetKeyDown(KeyCode.R) && powersList[currentPower] == "Power3" && attackPower)
         {
@@ -111,7 +113,6 @@ public class Powers : MonoBehaviour
             case "Power2":
                 break;
             case "Power3":
-                attackPower = true;
                 break;
             default:
                 break;
