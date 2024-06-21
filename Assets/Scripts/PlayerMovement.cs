@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private TimelineController Animation;
     private Dialog Trigger;
-    public PlayableDirector powerIndicatorVisible;
+    public PlayableDirector powerIndicatorVisible1;
+    public PlayableDirector powerIndicatorVisible2;
 
     private bool isGrounded;
     public bool powerSystemUnlocked = false;
@@ -77,7 +78,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 powerMachineCollider.enabled = false;
                 powerMachineRenderer.enabled = false;
-                powerIndicatorVisible.Play();
+                powerIndicatorVisible1.Play();
+                powerIndicatorVisible2.Play();
                 Dialog dialogScript = other.gameObject.GetComponent<Dialog>();
                 if (dialogScript != null)
                 {

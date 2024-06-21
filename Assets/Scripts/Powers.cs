@@ -13,7 +13,8 @@ public class Powers : MonoBehaviour
     public Sprite PowerOne;
     public Sprite PowerTwo;
     public Sprite PowerThree;
-    public Image powerImage;
+    public Image powerImage1;
+    public Image powerImage2;
 
     private bool canMoveBlocks = true;
     public bool attackPower = false;
@@ -85,12 +86,14 @@ public class Powers : MonoBehaviour
         if (powersList[currentPower] == "Power1")
         {
             canMoveBlocks = true;
-            powerImage.sprite = PowerOne;
+            powerImage1.sprite = PowerOne;
+            powerImage2.sprite = PowerOne;
         }
         else if (powersList[currentPower] == "Power2")
         {
             canMoveBlocks = false;
-            powerImage.sprite = PowerTwo;
+            powerImage1.sprite = PowerTwo;
+            powerImage2.sprite = PowerTwo;
         }
         else if (powersList[currentPower] == "Power3" && attackPower == false)
         {
@@ -98,7 +101,8 @@ public class Powers : MonoBehaviour
         }
         else if (powersList[currentPower] == "Power3" && attackPower == true)
         {
-            powerImage.sprite = PowerThree;
+            powerImage1.sprite = PowerThree;
+            powerImage2.sprite = PowerThree;
         }
 
         HandleMovePowerBlocks();
